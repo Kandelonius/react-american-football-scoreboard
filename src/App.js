@@ -5,41 +5,50 @@ import BottomRow from "./BottomRow";
 
 function App() {
   //TODO: STEP 2 - Establish your applictaion's state with some useState hooks.  You'll need one for the home score and another for the away score.
+  const [homeTeam, setHomeName] = useState("Lions");
   const [homeScore, setHomeScore] = useState(0);
+  const [awayTeam, setAwayName] = useState("Tigers");
   const [awayScore, setAwayScore] = useState(0);
-
+  const tally = event =>{
+    const team = event.target.name
+    if (team === homeTouchdown){
+      setHomeScore(homeScore + 7);
+    }else if(team === homeFeildGoal) {
+      setHomeScore(homeScore + 3)
+    }else if(team === awayTouchdown){
+      setawayScore(awayScore + 7)
+    }else {
+      setawayScore(awayScore + 3)
+    }
   return (
     <div className="container">
       <section className="scoreboard">
         <div className="topRow">
           <div className="home">
-            <h2 className="home__name">Lions</h2>
-
+            <h2 className="home__name">{homeTeam}</h2>
             {/* TODO STEP 3 - We need to change the hardcoded values in these divs to accept dynamic values from our state. */}
-
-            <div className="home__score">32</div>
+            <div className="home__score">{homeScore}</div>
           </div>
           <div className="timer">00:03</div>
           <div className="away">
-            <h2 className="away__name">Tigers</h2>
-            <div className="away__score">32</div>
+            <h2 className="away__name">{awayTeam}</h2>
+            <div className="away__score">{awayScore}</div>
           </div>
         </div>
         <BottomRow />
-      </section>
+      </section>{/* scoreboard end */}
       <section className="buttons">
         <div className="homeButtons">
           {/* TODO STEP 4 - Now we need to attach our state setter functions to click listeners. */}
-          <button className="homeButtons__touchdown">Home Touchdown</button>
-          <button className="homeButtons__fieldGoal">Home Field Goal</button>
+          <button className="homeButtons__touchdown" onClick={tally}name={homeTouchdown}>{homeTeam} Touchdown</button>
+          <button className="homeButtons__fieldGoal" onClick={tally}name={homeFieldGoal}>{homeTeam} Field Goal</button>
         </div>
         <div className="awayButtons">
-          <button className="awayButtons__touchdown">Away Touchdown</button>
-          <button className="awayButtons__fieldGoal">Away Field Goal</button>
+          <button className="awayButtons__touchdown" onClick={tally}name={awayTouchdown}>{awayTeam} Touchdown</button>
+          <button className="awayButtons__fieldGoal" onClick={tally}name={awayFieldGoal}>{awayTeam} Field Goal</button>
         </div>
       </section>
     </div>
   );
 }
-
 export default App;
