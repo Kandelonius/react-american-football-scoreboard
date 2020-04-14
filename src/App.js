@@ -4,22 +4,22 @@ import "./App.css";
 import BottomRow from "./BottomRow";
 
 function App() {
-  const [homeTeam, setHomeName] = useState("Lions");
-  const [awayTeam, setAwayName] = useState("Tigers");
+  const [homeTeam] = useState("Lions");
+  const [awayTeam] = useState("Tigers");
   //TODO: STEP 2 - Establish your applictaion's state with some useState hooks.  You'll need one for the home score and another for the away score.
   const [homeScore, setHomeScore] = useState(0);
   const [awayScore, setAwayScore] = useState(0);
   
-  const homeTouchdown = event =>{
+  const homeTouchdown = () =>{
     setHomeScore(homeScore + 7)
   }
-  const homeFieldGoal = event =>{
+  const homeFieldGoal = () =>{
     setHomeScore(homeScore + 3)
   }
-  const awayTouchdown = event =>{
+  const awayTouchdown = () =>{
     setAwayScore(awayScore + 7)
   }
-  const awayFieldGoal = event =>{
+  const awayFieldGoal = () =>{
     setAwayScore(awayScore + 3)
   }
   //   const team = event.target.name
