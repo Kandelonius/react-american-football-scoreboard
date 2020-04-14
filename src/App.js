@@ -25,24 +25,13 @@ const TopRow = ({ homeScore, awayScore }) => {
 function App() {
   const [homeScore, setHomeScore] = useState(0);
   const [awayScore, setAwayScore] = useState(0);
-  
   const score = (team, amount) => {
     if(team === 'Lions'){
       return setHomeScore(homeScore + amount)
     } else {
       return setAwayScore(awayScore + amount)
     }
-  }
-
-  // const homeFieldGoal = () =>{
-  //   setHomeScore(homeScore + 3)
-  // }
-  // const awayTouchdown = () =>{
-  //   setAwayScore(awayScore + 7)
-  // }
-  // const awayFieldGoal = () =>{
-  //   setAwayScore(awayScore + 3)
-  // }    
+  }  
   return (
     <div className="container">
       <section className="scoreboard">
@@ -57,6 +46,12 @@ function App() {
         <div className="awayButtons">
           <button className="awayButtons__touchdown"onClick={() => score('Tigers', 7)}>Tigers Touchdown</button>
           <button className="awayButtons__fieldGoal"onClick={() => score('Tigers', 3)}>Tigers Field Goal</button>
+        </div>
+        <div className="playStateButtons">
+          <button className="homeButtons__touchdown">Down</button>
+          <button className="homeButtons__fieldGoal">To Go</button>
+          <button className="homeButtons__touchdown">Ball on</button>
+          <button className="homeButtons__fieldGoal">Quarter</button>
         </div>
       </section>
     </div>
