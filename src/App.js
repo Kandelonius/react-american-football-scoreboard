@@ -26,28 +26,23 @@ function App() {
   const [homeScore, setHomeScore] = useState(0);
   const [awayScore, setAwayScore] = useState(0);
   
-  const homeTouchdown = () =>{
-    setHomeScore(homeScore + 7)
+  const score = (team, amount) => {
+    if(team === 'Lions'){
+      return setHomeScore(homeScore + amount)
+    } else {
+      return setAwayScore(awayScore + amount)
+    }
   }
-  const homeFieldGoal = () =>{
-    setHomeScore(homeScore + 3)
-  }
-  const awayTouchdown = () =>{
-    setAwayScore(awayScore + 7)
-  }
-  const awayFieldGoal = () =>{
-    setAwayScore(awayScore + 3)
-  }
-  //   const team = event.target.name
-    // if (team === homeTouchdown){
-    //   setHomeScore(homeScore + 7);
-    // }else if(team === homeFeildGoal) {
-    //   setHomeScore(homeScore + 3)
-    // }else if(team === awayTouchdown){
-    //   setAwayScore(awayScore + 7)
-    // }else {
-    //   setAwayScore(awayScore + 3)
-    
+
+  // const homeFieldGoal = () =>{
+  //   setHomeScore(homeScore + 3)
+  // }
+  // const awayTouchdown = () =>{
+  //   setAwayScore(awayScore + 7)
+  // }
+  // const awayFieldGoal = () =>{
+  //   setAwayScore(awayScore + 3)
+  // }    
   return (
     <div className="container">
       <section className="scoreboard">
@@ -56,12 +51,12 @@ function App() {
       </section>{/* scoreboard end */}
       <section className="buttons">
         <div className="homeButtons">
-          <button className="homeButtons__touchdown" onClick={homeTouchdown}>Lions Touchdown</button>
-          <button className="homeButtons__fieldGoal"onClick={homeFieldGoal}>Lions Field Goal</button>
+          <button className="homeButtons__touchdown" onClick={() => score('Lions', 7)}>Lions Touchdown</button>
+          <button className="homeButtons__fieldGoal"onClick={() => score('Lions', 3)}>Lions Field Goal</button>
         </div>
         <div className="awayButtons">
-          <button className="awayButtons__touchdown"onClick={awayTouchdown}>Tigers Touchdown</button>
-          <button className="awayButtons__fieldGoal"onClick={awayFieldGoal}>Tigers Field Goal</button>
+          <button className="awayButtons__touchdown"onClick={() => score('Tigers', 7)}>Tigers Touchdown</button>
+          <button className="awayButtons__fieldGoal"onClick={() => score('Tigers', 3)}>Tigers Field Goal</button>
         </div>
       </section>
     </div>
